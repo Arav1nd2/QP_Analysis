@@ -3,6 +3,13 @@ import { Row, Col } from 'antd';
 import axios from 'axios';
 import './App.css';
 
+/**
+ *  Change the proxy URL in package.json to your backend route
+ *  Look for console.log and change the variable in setResult method
+ *  
+ */
+
+
 function App() {
   const [image, setImage] = useState({preview: '', raw: ''});
   const [result, setResult] = useState(null);
@@ -22,7 +29,7 @@ function App() {
     const config = { headers: { 'content-type': 'multipart/form-data' } };
     setLoading(true);
     try {
-      const res = await axios.post('/', formData, config);
+      const res = await axios.post('http://localhost:3000/', formData, config);
       console.log(res.data);
       setResult(res.data.result); // Check the console log and change it appropriately 
       setLoading(false);
